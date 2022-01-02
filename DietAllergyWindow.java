@@ -17,15 +17,15 @@ import javax.swing.border.CompoundBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RecipeBookWindow extends JFrame implements ActionListener{
+public class DietAllergyWindow extends JFrame implements ActionListener{
     
     //Declaring GUI components
     JMenuBar menubar;
     JMenuItem helpItem;
-    JLabel recipeBookLabel;
+    JLabel dietAllergyLabel;
     JTable dbTable;
     JScrollPane scrollPane;
-    JPanel recipeBookPanel;
+    JPanel dietAllergyPanel;
     JButton addButton;
     Box scrollAddBox;
 
@@ -35,16 +35,16 @@ public class RecipeBookWindow extends JFrame implements ActionListener{
     final int WINDOW_W = 600;
     final int WINDOW_H = 550;
 
-    public RecipeBookWindow() {
-        super("Recipe Book");
+    public DietAllergyWindow() {
+        super("Diets and Allergies");
 
         //Initializing components
         menubar = new JMenuBar();
         helpItem = new JMenuItem("Help");
-        recipeBookLabel = new JLabel("Recipe Book");
+        dietAllergyLabel = new JLabel("Diets and Allergies");
         dbTable = new JTable();
         scrollPane = new JScrollPane();
-        recipeBookPanel = new JPanel();
+        dietAllergyPanel = new JPanel();
         scrollAddBox = Box.createHorizontalBox();
         addButton = new JButton("Add");
 
@@ -67,15 +67,15 @@ public class RecipeBookWindow extends JFrame implements ActionListener{
         scrollAddBox.add(addButton);
 
         //Adding to panel
-        recipeBookPanel.add(recipeBookLabel);
-        recipeBookPanel.add(scrollAddBox);
+        dietAllergyPanel.add(dietAllergyLabel);
+        dietAllergyPanel.add(scrollAddBox);
 
         //Preparing Window
         this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //Adding to window
-        this.add(recipeBookPanel);
+        this.add(dietAllergyPanel);
 
         //Adding menubar
         this.setJMenuBar(menubar);
@@ -85,7 +85,7 @@ public class RecipeBookWindow extends JFrame implements ActionListener{
 
     public static void main(String[] args)
     {
-        new RecipeBookWindow();
+        new DietAllergyWindow();
     }
 
     @Override
