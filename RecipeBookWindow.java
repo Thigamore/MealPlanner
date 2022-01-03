@@ -20,20 +20,20 @@ import java.awt.event.ActionListener;
 public class RecipeBookWindow extends JFrame implements ActionListener{
     
     //Declaring GUI components
-    JMenuBar menubar;
-    JMenuItem helpItem;
-    JLabel recipeBookLabel;
-    JTable dbTable;
-    JScrollPane scrollPane;
-    JPanel recipeBookPanel;
-    JButton addButton;
-    Box scrollAddBox;
+    private JMenuBar menubar;
+    private JMenuItem helpItem;
+    private JLabel recipeBookLabel;
+    private JTable dbTable;
+    private JScrollPane scrollPane;
+    private JPanel recipeBookPanel;
+    private JButton addButton;
+    private Box scrollAddBox;
 
     //Declaring constants
-    final int WINDOW_X = 100;
-    final int WINDOW_Y = 100;
-    final int WINDOW_W = 600;
-    final int WINDOW_H = 550;
+    private final int WINDOW_X = 100;
+    private final int WINDOW_Y = 100;
+    private final int WINDOW_W = 600;
+    private final int WINDOW_H = 550;
 
     public RecipeBookWindow() {
         super("Recipe Book");

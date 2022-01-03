@@ -18,24 +18,24 @@ import java.awt.Image;
 public class MainWindow extends JFrame implements ActionListener {
     
     //Declaring variables
-    JMenuBar menubar;
-    JMenuItem helpItem;
-    JButton fridgeButton;
-    JButton planningButton;
-    JButton recipeBookButton;
-    JButton dietAllergyButton;
-    JPanel buttonPanel;
-    Box[] rowBoxes;
-    ImageIcon fridgeIcon;
-    ImageIcon recipeBookIcon;
-    ImageIcon planningIcon;
-    ImageIcon dietAllergyIcon;
+    private JMenuBar menubar;
+    private JMenuItem helpItem;
+    private JButton fridgeButton;
+    private JButton planningButton;
+    private JButton recipeBookButton;
+    private JButton dietAllergyButton;
+    private JPanel buttonPanel;
+    private Box[] rowBoxes;
+    private ImageIcon fridgeIcon;
+    private ImageIcon recipeBookIcon;
+    private ImageIcon planningIcon;
+    private ImageIcon dietAllergyIcon;
 
     //Initializing constants
-    final int WINDOW_X = 100;
-    final int WINDOW_Y = 100;
-    final int WINDOW_W = 500;
-    final int WINDOW_H = 500;
+    private final int WINDOW_X = 100;
+    private final int WINDOW_Y = 100;
+    private final int WINDOW_W = 500;
+    private final int WINDOW_H = 500;
 
     //Constructor for window
     public MainWindow() {
