@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
 
 public class AddWindow extends JFrame implements ActionListener{
 
-    //Declaaring GUI components
+    //Declaring GUI components
     private JMenuBar menubar;
     private JMenuItem helpItem;
     private JLabel addLabel;
@@ -34,6 +34,9 @@ public class AddWindow extends JFrame implements ActionListener{
     private Box mainInfoBox;
     private Box[] scrollBoxes;
     private Box mainAddBox;
+
+    //Declaring extra variable
+    private String type;
 
     //Declaring constants
     private final int WINDOW_X = 100;
@@ -53,6 +56,7 @@ public class AddWindow extends JFrame implements ActionListener{
     //Sets up an add class for the fridge
     private void setupFridge() {
         //Initializing GUI components
+        type = "fridge";
         addLabel = new JLabel("Add Ingredient");
         nameLabel = new JLabel("Name: ");
         nameField = new JTextField(20);
@@ -119,12 +123,25 @@ public class AddWindow extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
+    
     public static void main(String[] args) {
         new AddWindow("fridge");
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        Object source = e.getSource();
+        
+        for (int i = 0; i < addButtons.length; i++)
+        {
+            if (addButtons[i].equals(source)) 
+            {
+                if(type.equals("fridge"))
+                {
+                    
+                }
+            }
+        }
         
     }
 }
