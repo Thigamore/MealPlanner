@@ -16,6 +16,7 @@ import javax.swing.border.CompoundBorder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Dimension;
 
 
 public class AddWindow extends JFrame implements ActionListener{
@@ -85,6 +86,58 @@ public class AddWindow extends JFrame implements ActionListener{
         mainAddBox = Box.createVerticalBox();
 
         //Adding action listeners
+        helpItem.addActionListener(this);
+        addButtons[0].addActionListener(this);
+
+        //Preparing a label
+        addLabel.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0), addLabel.getBorder()));
+
+        //Preparing nameBox
+        nameBox.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0), nameBox.getBorder()));
+
+        //Preparing scroll pane
+        scrollPanes[0].setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10), scrollPanes[0].getBorder()));
+        scrollPanes[0].getViewport().add(dbTables[0]);
+        scrollPanes[1].setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10), scrollPanes[1].getBorder()));
+        scrollPanes[1].getViewport().add(dbTables[1]);
+        scrollPanes[1].setMaximumSize(new Dimension(400,500));
+
+        //Adding to menubar
+        menubar.add(helpItem);
+        
+        //Adding to nameBox
+        nameBox.add(nameLabel);
+        nameBox.add(nameField);
+
+        //Adding to scrollBox[0]
+        scrollBoxes[0].add(titleLabels[0]);
+        scrollBoxes[0].add(scrollPanes[0]);
+        scrollBoxes[0].add(addButtons[0]);
+
+        //Adding to scrollBox[1]
+        scrollBoxes[1].add(titleLabels[1]);
+        scrollBoxes[1].add(scrollPanes[1]);
+
+        //Adding to mainInfoBox
+        mainInfoBox.add(scrollBoxes[0]);
+        mainInfoBox.add(scrollBoxes[1]);
+
+        //Adding to mainAddBox
+        mainAddBox.add(addLabel);
+        mainAddBox.add(nameBox);
+        mainAddBox.add(mainInfoBox);
+
+        //Preparing window
+        this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        //Adding to window
+        this.add(mainAddBox);
+
+        //Adding menubar
+        this.setJMenuBar(menubar);
+
+        this.setVisible(true);
     }
 
     //Sets up an add class for an ingredient
@@ -159,7 +212,7 @@ public class AddWindow extends JFrame implements ActionListener{
 
     
     public static void main(String[] args) {
-        new AddWindow("ingredient");
+        new AddWindow("recipe");
     }
 
     @Override
