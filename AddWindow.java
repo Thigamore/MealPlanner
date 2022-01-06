@@ -44,19 +44,53 @@ public class AddWindow extends JFrame implements ActionListener{
     private final int WINDOW_W = 600;
     private final int WINDOW_H = 550;
 
-    public AddWindow(String windowName)
+    public AddWindow(String purpose)
     {
-        super("Add " + windowName.toUpperCase());
-        if(windowName.equals("fridge"))
+        super("Add " + purpose.toUpperCase());
+        if(purpose.equals("ingredient"))
         {
-            setupFridge();
+            setupIngredient();
+        }
+        else if(purpose.equals("recipe"))
+        {
+            setupRecipe();
         }
     }
 
-    //Sets up an add class for the fridge
-    private void setupFridge() {
+    //Sets up an add class for a recipe
+    private void setupRecipe() {
+        //Initializing variables
+        type = "recipe";
+        addLabel = new JLabel("Add Recipe");
+        nameLabel = new JLabel("Name: ");
+        nameField = new JTextField(20);
+        nameBox = Box.createHorizontalBox();
+        titleLabels = new JLabel[2];
+        titleLabels[0] = new JLabel("Steps");
+        titleLabels[1] = new JLabel("Ingredients");
+        scrollPanes = new JScrollPane[2];
+        scrollPanes[0] = new JScrollPane();
+        scrollPanes[1] = new JScrollPane();
+        dbTables = new JTable[2];
+        dbTables[0] = new JTable();
+        dbTables[1] = new JTable();
+        menubar = new JMenuBar();
+        helpItem = new JMenuItem("Help");
+        scrollBoxes = new Box[2];
+        scrollBoxes[0] = Box.createVerticalBox();
+        scrollBoxes[1] = Box.createVerticalBox();
+        mainInfoBox = Box.createHorizontalBox();
+        addButtons = new JButton[1];
+        addButtons[0] = new JButton("Add Step");
+        mainAddBox = Box.createVerticalBox();
+
+        //Adding action listeners
+    }
+
+    //Sets up an add class for an ingredient
+    private void setupIngredient() {
         //Initializing GUI components
-        type = "fridge";
+        type = "ingredient";
         addLabel = new JLabel("Add Ingredient");
         nameLabel = new JLabel("Name: ");
         nameField = new JTextField(20);
@@ -125,7 +159,7 @@ public class AddWindow extends JFrame implements ActionListener{
 
     
     public static void main(String[] args) {
-        new AddWindow("fridge");
+        new AddWindow("ingredient");
     }
 
     @Override
@@ -136,7 +170,7 @@ public class AddWindow extends JFrame implements ActionListener{
         {
             if (addButtons[i].equals(source)) 
             {
-                if(type.equals("fridge"))
+                if(type.equals("ingredient"))
                 {
                     
                 }
