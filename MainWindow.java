@@ -1,4 +1,3 @@
-//Thomas Lascaud
 //12/30/21
 //The launch window which the user starts at and which will guide them through the different parts
 // of the application
@@ -59,7 +58,7 @@ public class MainWindow extends JFrame implements ActionListener {
         fridgeButton.addActionListener(this);
         planningButton.addActionListener(this);
         recipeBookButton.addActionListener(this);
-        recipeBookButton.addActionListener(this);
+        dietAllergyButton.addActionListener(this);
         helpItem.addActionListener(this);
 
         //Setting up the boxes
@@ -101,7 +100,7 @@ public class MainWindow extends JFrame implements ActionListener {
         Object source = e.getSource();
         if (source.equals(helpItem))
         {
-            new HelpWindow();
+            new HelpWindow("main");
         }
         else if(source.equals(fridgeButton))
         {

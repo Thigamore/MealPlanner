@@ -1,4 +1,3 @@
-//Thomas Lascaud
 //12/30/21
 //Allows the user to see different ingredients in database and add ingredients
 
@@ -72,7 +71,7 @@ public class FridgeWindow extends JFrame implements ActionListener{
 
         //Preparing Window
         this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         //Adding to window
         this.add(fridgePanel);
@@ -93,11 +92,11 @@ public class FridgeWindow extends JFrame implements ActionListener{
         Object source = e.getSource();
         if (source.equals(helpItem))
         {
-            new HelpWindow();
+            new HelpWindow("fridge");
         }
         else if (source.equals(addButton))
         {
-
+            new AddWindow("ingredient");
         }
     }
 }

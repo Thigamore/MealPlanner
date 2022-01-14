@@ -1,4 +1,3 @@
-// Thomas Lascaud
 // 1/2/22
 // Adds data to the database depending on what the user wants to add
 
@@ -35,6 +34,7 @@ public class AddWindow extends JFrame implements ActionListener{
     private Box mainInfoBox;
     private Box[] scrollBoxes;
     private Box mainAddBox;
+    private Box buttonBox;
 
     //Declaring extra variable
     private String type;
@@ -55,6 +55,14 @@ public class AddWindow extends JFrame implements ActionListener{
         else if(purpose.equals("recipe"))
         {
             setupRecipe();
+        }
+        else if(purpose.equals("diet"))
+        {
+            setupDiet();
+        }
+        else if(purpose.equals("allergy"))
+        {
+            setupAllergy();
         }
     }
 
@@ -81,9 +89,11 @@ public class AddWindow extends JFrame implements ActionListener{
         scrollBoxes[0] = Box.createVerticalBox();
         scrollBoxes[1] = Box.createVerticalBox();
         mainInfoBox = Box.createHorizontalBox();
-        addButtons = new JButton[1];
+        addButtons = new JButton[2];
         addButtons[0] = new JButton("Add Step");
+        addButtons[1] = new JButton("Add Recipe");
         mainAddBox = Box.createVerticalBox();
+        buttonBox = Box.createHorizontalBox();
 
         //Adding action listeners
         helpItem.addActionListener(this);
@@ -109,10 +119,14 @@ public class AddWindow extends JFrame implements ActionListener{
         nameBox.add(nameLabel);
         nameBox.add(nameField);
 
+        //Adding to button box
+        buttonBox.add(addButtons[0]);
+        buttonBox.add(addButtons[1]);
+
         //Adding to scrollBox[0]
         scrollBoxes[0].add(titleLabels[0]);
         scrollBoxes[0].add(scrollPanes[0]);
-        scrollBoxes[0].add(addButtons[0]);
+        scrollBoxes[0].add(buttonBox);
 
         //Adding to scrollBox[1]
         scrollBoxes[1].add(titleLabels[1]);
@@ -129,7 +143,7 @@ public class AddWindow extends JFrame implements ActionListener{
 
         //Preparing window
         this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         //Adding to window
         this.add(mainAddBox);
@@ -140,6 +154,147 @@ public class AddWindow extends JFrame implements ActionListener{
         this.setVisible(true);
     }
 
+    //Sets up an add class for an allergy
+    private void setupAllergy() {
+        //Initializing GUI components
+        type = "allergy";
+        addLabel = new JLabel("Add Allergy");
+        nameLabel = new JLabel("Name: ");
+        nameField = new JTextField(20);
+        nameBox = Box.createHorizontalBox();
+        titleLabels = new JLabel[1];
+        titleLabels[0] = new JLabel("Restricting Information");
+        scrollPanes = new JScrollPane[1];
+        scrollPanes[0] = new JScrollPane();
+        dbTables = new JTable[1];
+        dbTables[0] = new JTable();
+        menubar = new JMenuBar();
+        helpItem = new JMenuItem("Help");
+        scrollBoxes = new Box[1];
+        scrollBoxes[0] = Box.createVerticalBox();
+        mainInfoBox = Box.createHorizontalBox();
+        addButtons = new JButton[1];
+        addButtons[0] = new JButton("Add");
+        mainAddBox = Box.createVerticalBox();
+        
+        //Adding action listeners
+        helpItem.addActionListener(this);
+        addButtons[0].addActionListener(this);
+
+        //Preparing a label
+        addLabel.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0), addLabel.getBorder()));
+
+        //Preparing nameBox
+        nameBox.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0), nameBox.getBorder()));
+
+        //Preparing scroll pane
+        scrollPanes[0].setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10), scrollPanes[0].getBorder()));
+        scrollPanes[0].getViewport().add(dbTables[0]);
+
+        //Adding to menubar
+        menubar.add(helpItem);
+
+        //Adding to nameBox
+        nameBox.add(nameLabel);
+        nameBox.add(nameField);
+
+        //Adding to scrollBox
+        scrollBoxes[0].add(titleLabels[0]);
+        scrollBoxes[0].add(scrollPanes[0]);
+        scrollBoxes[0].add(addButtons[0]);
+
+        //Adding to mainInfoBox
+        mainInfoBox.add(scrollBoxes[0]);
+
+        //Adding to mainAddBox
+        mainAddBox.add(addLabel);
+        mainAddBox.add(nameBox);
+        mainAddBox.add(mainInfoBox);
+
+        //Preparing window
+        this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        //Adding to window
+        this.add(mainAddBox);
+
+        //Adding menubar
+        this.setJMenuBar(menubar);
+
+        this.setVisible(true);
+    }
+
+    //Sets up an add class for a diet
+    private void setupDiet() {
+        //Initializing GUI components
+        type = "diet";
+        addLabel = new JLabel("Add Diet");
+        nameLabel = new JLabel("Name: ");
+        nameField = new JTextField(20);
+        nameBox = Box.createHorizontalBox();
+        titleLabels = new JLabel[1];
+        titleLabels[0] = new JLabel("Restricting Information");
+        scrollPanes = new JScrollPane[1];
+        scrollPanes[0] = new JScrollPane();
+        dbTables = new JTable[1];
+        dbTables[0] = new JTable();
+        menubar = new JMenuBar();
+        helpItem = new JMenuItem("Help");
+        scrollBoxes = new Box[1];
+        scrollBoxes[0] = Box.createVerticalBox();
+        mainInfoBox = Box.createHorizontalBox();
+        addButtons = new JButton[1];
+        addButtons[0] = new JButton("Add");
+        mainAddBox = Box.createVerticalBox();
+        
+        //Adding action listeners
+        helpItem.addActionListener(this);
+        addButtons[0].addActionListener(this);
+
+        //Preparing a label
+        addLabel.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0), addLabel.getBorder()));
+
+        //Preparing nameBox
+        nameBox.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0), nameBox.getBorder()));
+
+        //Preparing scroll pane
+        scrollPanes[0].setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10), scrollPanes[0].getBorder()));
+        scrollPanes[0].getViewport().add(dbTables[0]);
+
+        //Adding to menubar
+        menubar.add(helpItem);
+
+        //Adding to nameBox
+        nameBox.add(nameLabel);
+        nameBox.add(nameField);
+
+        //Adding to scrollBox
+        scrollBoxes[0].add(titleLabels[0]);
+        scrollBoxes[0].add(scrollPanes[0]);
+        scrollBoxes[0].add(addButtons[0]);
+
+        //Adding to mainInfoBox
+        mainInfoBox.add(scrollBoxes[0]);
+
+        //Adding to mainAddBox
+        mainAddBox.add(addLabel);
+        mainAddBox.add(nameBox);
+        mainAddBox.add(mainInfoBox);
+
+        //Preparing window
+        this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+        //Adding to window
+        this.add(mainAddBox);
+
+        //Adding menubar
+        this.setJMenuBar(menubar);
+
+        this.setVisible(true);
+    }
+
+    //Sets up a diet add window
     //Sets up an add class for an ingredient
     private void setupIngredient() {
         //Initializing GUI components
@@ -199,17 +354,18 @@ public class AddWindow extends JFrame implements ActionListener{
 
         //Preparing window
         this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         //Adding to window
         this.add(mainAddBox);
+
+    
 
         //Adding menubar
         this.setJMenuBar(menubar);
 
         this.setVisible(true);
     }
-
     
     public static void main(String[] args) {
         new AddWindow("recipe");
@@ -218,7 +374,10 @@ public class AddWindow extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        
+        if (source.equals(helpItem))
+        {
+            new HelpWindow("add"+type);
+        }
         for (int i = 0; i < addButtons.length; i++)
         {
             if (addButtons[i].equals(source)) 
@@ -226,6 +385,18 @@ public class AddWindow extends JFrame implements ActionListener{
                 if(type.equals("ingredient"))
                 {
                     
+                } 
+                else if(type.equals("recipe"))
+                {
+
+                }
+                else if(type.equals("diet"))
+                {
+
+                }
+                else if(type.equals("allergy"))
+                {
+
                 }
             }
         }

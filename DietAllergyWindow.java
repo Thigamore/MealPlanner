@@ -1,4 +1,3 @@
-//Thomas Lascaud
 //12/30/21
 //Allows the user to see different ingredients in database and add ingredients
 
@@ -26,8 +25,10 @@ public class DietAllergyWindow extends JFrame implements ActionListener{
     private JTable dbTable;
     private JScrollPane scrollPane;
     private JPanel dietAllergyPanel;
-    private JButton addButton;
+    private JButton addDietButton;
+    private JButton addAllergyButton;
     private Box scrollAddBox;
+    private Box buttonBox;
 
     //Declaring constants
     private final int WINDOW_X = 100;
@@ -46,11 +47,14 @@ public class DietAllergyWindow extends JFrame implements ActionListener{
         scrollPane = new JScrollPane();
         dietAllergyPanel = new JPanel();
         scrollAddBox = Box.createHorizontalBox();
-        addButton = new JButton("Add");
+        addDietButton = new JButton("Add Diet");
+        addAllergyButton = new JButton("Add Allergy");
+        buttonBox = Box.createVerticalBox();
 
         //Adding action listeners to componenets
         helpItem.addActionListener(this);
-        addButton.addActionListener(this);
+        addDietButton.addActionListener(this);
+        addAllergyButton.addActionListener(this);
 
         //Adding to menubar
         menubar.add(helpItem);
@@ -62,9 +66,13 @@ public class DietAllergyWindow extends JFrame implements ActionListener{
         //Preparing box
         scrollAddBox.setBorder(new CompoundBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10), scrollAddBox.getBorder()));
 
+        //Adding to button box
+        buttonBox.add(addDietButton);
+        buttonBox.add(addAllergyButton);
+
         //Adding to box
         scrollAddBox.add(scrollPane);
-        scrollAddBox.add(addButton);
+        scrollAddBox.add(buttonBox);
 
         //Adding to panel
         dietAllergyPanel.add(dietAllergyLabel);
@@ -72,7 +80,7 @@ public class DietAllergyWindow extends JFrame implements ActionListener{
 
         //Preparing Window
         this.setBounds(WINDOW_X, WINDOW_Y, WINDOW_W, WINDOW_H);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         //Adding to window
         this.add(dietAllergyPanel);
@@ -93,11 +101,14 @@ public class DietAllergyWindow extends JFrame implements ActionListener{
         Object source = e.getSource();
         if (source.equals(helpItem))
         {
-            new HelpWindow();
+            new HelpWindow("dietAllergy");
         }
-        else if (source.equals(addButton))
+        else if (source.equals(addDietButton)) {
+            new AddWindow("diet");
+        }
+        else if (source.equals(addAllergyButton))
         {
-
+            new AddWindow("allergy");
         }
     }
 }
